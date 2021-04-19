@@ -115,6 +115,7 @@ struct ContentView: View {
         
         gameScore = 0
         gameRound = 0
+        yourAnswer = ""
     }
 }
 
