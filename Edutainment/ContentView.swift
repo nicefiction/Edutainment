@@ -72,12 +72,16 @@ struct ContentView: View {
                         .font(.largeTitle)
                 }
                 Section(header: Text("Your Score")) {
-                    HStack {
-                        Spacer()
-                        Text("\(gameScore)")
-                            .font(.largeTitle)
-                            .bold()
-                        Spacer()
+                    VStack {
+                        Text("Round \(gameRound) of \(gameLength[selectedGameLengthIndex])")
+                            .font(.headline)
+                        HStack {
+                            Spacer()
+                            Text("\(gameScore)")
+                                .font(.largeTitle)
+                                .bold()
+                            Spacer()
+                        }
                     }
                 }
             }
@@ -100,7 +104,7 @@ struct ContentView: View {
     
     
     func startNewRound() {
-        gameRound <= gameLength[selectedGameLengthIndex] ? calculateScore() : startNewGame()
+        gameRound < gameLength[selectedGameLengthIndex] ? calculateScore() : startNewGame()
         
         gameRound += 1
         multiplicationNumber = Int.random(in: 1...10)
@@ -111,7 +115,6 @@ struct ContentView: View {
         
         gameScore = 0
         gameRound = 0
-        calculateScore()
     }
 }
 
